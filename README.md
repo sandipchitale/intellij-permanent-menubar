@@ -55,7 +55,6 @@ This file contains:
   1890 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent.class
   1447 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent$1.class
    442 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenuKt.class
-     0 misc/
 151382 misc/registry.properties
 ```
 
