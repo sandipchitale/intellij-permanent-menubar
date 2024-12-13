@@ -45,40 +45,24 @@ I really do not like the collapsing menubar. So I created this patch reporitory.
 
 ### How to apply the patch
 
-- Drop the `lib/app-client-pre.jar` in the IDE's lib folder.
+- **IMPORTANT: DO THIS FIRST** - Use **Help > Edit custom properties...** action and set flag:
 
-This file contains:
-```
- 16501 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu.class <----------- This has the patched behavior
-  1416 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$2.class
-  3152 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$HeaderColorfulPanel.class
-  1890 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent.class
-  1447 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent$1.class
-   442 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenuKt.class
-151382 misc/registry.properties
+```properties
+:
+ide.main.menu.expand.horizontal.sticky=true
+:
 ```
 
 - Edit the `bin/idea.sh` file ( sample is included in `bin/idea.sh`) and make sure to add:
 
 ```bash
 :
-:
-:
 CLASS_PATH="$CLASS_PATH:$IDE_HOME/lib/app-client-pre.jar"
 CLASS_PATH="$CLASS_PATH:$IDE_HOME/lib/app-client.jar"
-:
-:
 :
 ```
   which basically puts the patched classes in front to the original.
 
-- Use **Help > Edit custom properties...** action and set flag:
-
-`ide.main.menu.expand.horizontal.sticky=true`
-
-That is all in terms of changes.
-
-- Of course make sure to launch the IDE using `bin/idea.sh` (on linux and mac).
 
 NOTE: You can do similar changes to the `bin\idea.bat` file on windows.
 
@@ -88,3 +72,18 @@ SET "CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\app-client-pre.jar"
 SET "CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\app-client.jar"
 :
 ```
+
+- Drop the `lib/app-client-pre.jar` in the IDE's lib folder.
+
+This file contains:
+
+```
+ 16501 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu.class <----------- This has the patched behavior
+  1416 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$2.class
+  3152 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$HeaderColorfulPanel.class
+  1890 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent.class
+  1447 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenu$ShadowComponent$1.class
+   442 com/intellij/openapi/wm/impl/customFrameDecorations/header/toolbar/ExpandableMenuKt.class
+```
+
+- Of course make sure to launch the IDE using `bin/idea.sh` (on linux and mac).
