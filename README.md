@@ -80,4 +80,11 @@ That is all in terms of changes.
 
 - Of course make sure to launch the IDE using `bin/idea.sh` (on linux and mac).
 
-NOTE: You can do similar chnages to the `bin\idea.bat` file on windows.
+NOTE: You can do similar changes to the `bin\idea.bat` file on windows.
+
+```bat
+:
+SET "CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\app-client-pre.jar"
+SET "CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\app-client.jar"
+:
+```
